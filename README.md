@@ -14,3 +14,11 @@ Think of it like this:
 
 Example Analogy:
 > If your app is a ship, Docker containers are like sealed cargo containers - they carry your goods (code + dependencies) safely across any ship (OS/environment).
+
+# Why Use Docker?
+
+* `Consistency:` Works the same on dev, staging, and production
+* `Isolation:` No dependency conflicts
+* `Portability:` Run anywhere (Windows, macOS, Linux, Cloud)
+* `Scalability:` Ideal for microservices and cloud deployment
+* `Efficiency:`Lightweight compared to virtual machines
