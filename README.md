@@ -36,6 +36,7 @@ Example Analogy:
 
 ## Docker Architecture
 
+```
 +----------------------+
 |     Docker CLI       |  <- You interact here
 +----------+-----------+
@@ -50,3 +51,5 @@ Example Analogy:
 |   Docker Objects     |
 | (Images, Containers) |
 +----------------------+
+
+```
