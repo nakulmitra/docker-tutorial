@@ -33,3 +33,20 @@ Example Analogy:
 | **Volume**     | Persistent storage for containers          |
 | **Network**    | Enables communication between containers   |
 | **Registry**   | Repository for images (e.g., Docker Hub)   |
+
+## Docker Architecture
+
++----------------------+
+|     Docker CLI       |  <- You interact here
++----------+-----------+
+           |
+           v
++----------------------+
+|   Docker Daemon      |  <- Core engine (runs containers, builds images)
++----------+-----------+
+           |
+           v
++----------------------+
+|   Docker Objects     |
+| (Images, Containers) |
++----------------------+
