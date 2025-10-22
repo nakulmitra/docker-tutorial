@@ -53,3 +53,18 @@ Example Analogy:
 +----------------------+
 
 ```
+
+## Basic Docker Commands
+
+| Command                   | Description                             |
+| ------------------------- | --------------------------------------- |
+| `docker --version`        | Check Docker version                    |
+| `docker info`             | Show system-wide info                   |
+| `docker images`           | List all images                         |
+| `docker ps`               | List running containers                 |
+| `docker ps -a`            | List all containers (stopped + running) |
+| `docker pull <image>`     | Download an image                       |
+| `docker run <image>`      | Run a container                         |
+| `docker stop <container>` | Stop a running container                |
+| `docker rm <container>`   | Remove a container                      |
+| `docker rmi <image>`      | Remove an image                         |
