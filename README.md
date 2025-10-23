@@ -68,3 +68,63 @@ Example Analogy:
 | `docker stop <container>` | Stop a running container                |
 | `docker rm <container>`   | Remove a container                      |
 | `docker rmi <image>`      | Remove an image                         |
+
+## Working with Docker Images
+
+### Pull an image from Docker Hub
+
+```
+docker pull nginx
+```
+
+### Run the image
+
+```
+docker run -d -p 8080:80 nginx
+```
+
+`-d` -> detached mode (runs in background)
+`-p 8080:80` -> maps container port 80 to host port 8080
+
+`Visit:` http://localhost:8080
+
+### List images
+
+```
+docker images
+```
+
+### Remove image
+
+```
+docker rmi nginx
+```
+
+## Running & Managing Containers
+
+### Run container with a name
+
+```
+docker run -d --name mynginx -p 8080:80 nginx
+```
+
+### Stop / Start
+
+```
+docker stop mynginx
+docker start mynginx
+```
+
+### View logs
+
+```
+docker logs mynginx
+```
+
+### Execute command inside container
+
+```
+docker exec -it mynginx bash
+```
+
+`-it` -> interactive terminal
