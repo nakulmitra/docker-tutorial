@@ -13,7 +13,7 @@ Think of it like this:
 * Docker apps run inside isolated "containers" -> consistent behavior everywhere
 
 Example Analogy:
-> If your app is a ship, Docker containers are like sealed cargo containers - they carry your goods (code + dependencies) safely across any ship (OS/environment).
+> If our app is a ship, Docker containers are like sealed cargo containers - they carry our goods (code + dependencies) safely across any ship (OS/environment).
 
 ## Why Use Docker?
 
@@ -27,7 +27,7 @@ Example Analogy:
 
 | Term           | Description                                |
 | -------------- | ------------------------------------------ |
-| **Image**      | Blueprint of your app (read-only template) |
+| **Image**      | Blueprint of our app (read-only template) |
 | **Container**  | Running instance of an image               |
 | **Dockerfile** | Script defining how an image is built      |
 | **Volume**     | Persistent storage for containers          |
@@ -38,7 +38,7 @@ Example Analogy:
 
 ```
 +----------------------+
-|     Docker CLI       |  <- You interact here
+|     Docker CLI       |  <- We interact here
 +----------+-----------+
            |
            v
