@@ -83,8 +83,8 @@ docker pull nginx
 docker run -d -p 8080:80 nginx
 ```
 
-`-d` -> detached mode (runs in background)
-`-p 8080:80` -> maps container port 80 to host port 8080
+* `-d` -> detached mode (runs in background)
+* `-p 8080:80` -> maps container port 80 to host port 8080
 
 `Visit:` http://localhost:8080
 
@@ -128,3 +128,33 @@ docker exec -it mynginx bash
 ```
 
 `-it` -> interactive terminal
+
+## Building Your Own Image (Dockerfile)
+
+### Example: Simple Python App
+
+#### 1. app.py
+```
+print("Hello from Docker!")
+```
+
+#### 2. Dockerfile
+```
+# Use base image
+FROM python:3.9
+
+# Set working directory
+WORKDIR /app
+
+# Copy source code
+COPY app.py .
+
+# Run app
+CMD ["python", "app.py"]
+```
+
+#### Build & Run
+```
+docker build -t mypythonapp .
+docker run mypythonapp
+```
