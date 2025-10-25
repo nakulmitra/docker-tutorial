@@ -73,13 +73,13 @@ Example Analogy:
 
 ### Pull an image from Docker Hub
 
-```
+```bash
 docker pull nginx
 ```
 
 ### Run the image
 
-```
+```bash
 docker run -d -p 8080:80 nginx
 ```
 
@@ -90,13 +90,13 @@ docker run -d -p 8080:80 nginx
 
 ### List images
 
-```
+```bash
 docker images
 ```
 
 ### Remove image
 
-```
+```bash
 docker rmi nginx
 ```
 
@@ -104,26 +104,26 @@ docker rmi nginx
 
 ### Run container with a name
 
-```
+```bash
 docker run -d --name mynginx -p 8080:80 nginx
 ```
 
 ### Stop / Start
 
-```
+```bash
 docker stop mynginx
 docker start mynginx
 ```
 
 ### View logs
 
-```
+```bash
 docker logs mynginx
 ```
 
 ### Execute command inside container
 
-```
+```bash
 docker exec -it mynginx bash
 ```
 
@@ -134,12 +134,12 @@ docker exec -it mynginx bash
 ### Example: Simple Python App
 
 #### 1. app.py
-```
+```python
 print("Hello from Docker!")
 ```
 
 #### 2. Dockerfile
-```
+```Dockerfile
 # Use base image
 FROM python:3.9
 
@@ -154,7 +154,7 @@ CMD ["python", "app.py"]
 ```
 
 #### Build & Run
-```
+```bash
 docker build -t mypythonapp .
 docker run mypythonapp
 ```
@@ -164,41 +164,111 @@ Learn how to control containers - start, stop, inspect, and remove them.
 
 ### List Containers
 - Running containers:
-```
+```bash
 docker ps
 ```
 
 - All containers (including stopped):
-```
+```bash
 docker ps -a
 ```
 
 - Stop Container:
-```
+```bash
 docker stop mynginx
 ```
 
 - Start Container:
-```
+```bash
 docker start mynginx
 ```
 
 - Inspect Container:
-```
+```bash
 docker inspect mynginx
 ```
 
 - View Logs:
-```
+```bash
 docker logs mynginx
 ```
 
 - Access Container Shell:
-```
+```bash
 docker exec -it mynginx bash
 ```
 
 - Remove Container
-```
+```bash
 docker rm mynginx
 ```
+
+## Docker Volumes - Persistent Data
+By default, Docker containers are **ephemeral** - their data disappears once the container is removed. **Volumes** solve this problem by storing data *outside* the container's writable layer.
+
+### Common Commands
+
+- Create a volume
+```bash
+docker volume create mydata
+```
+
+- List all volumes
+```bash
+docker volume ls
+```
+
+- Inspect a volume
+```bash
+docker volume inspect mydata
+```
+
+- Remove a volume
+```bash
+docker volume rm mydata
+```
+
+### Example: Persisting App Data
+
+- data_writer.py
+
+```python
+import time
+
+while True:
+    with open("/data/output.txt", "a") as f:
+        f.write("Log entry from Docker container\n")
+    print("Wrote data to /data/output.txt")
+    time.sleep(5)
+```
+
+- Dockerfile
+```Dockerfile
+FROM python:3.9
+WORKDIR /app
+COPY app/ .
+CMD ["python", "data_writer.py"]
+```
+
+- Build and Run with a Volume
+```bash
+docker build -t data-writer .
+docker run -d --name writer -v mydata:/data data-writer
+```
+
+- Check the Data
+```bash
+docker exec -it writer cat /data/output.txt
+```
+
+- Even if we remove the container:
+```bash
+docker rm -f writer
+```
+
+- The data still persists in the volume:
+```bash
+docker run -it --rm -v mydata:/data alpine cat /data/output.txt
+```
+
+Volume keeps your data safe!
