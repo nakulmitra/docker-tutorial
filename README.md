@@ -158,3 +158,47 @@ CMD ["python", "app.py"]
 docker build -t mypythonapp .
 docker run mypythonapp
 ```
+
+## Managing Containers
+Learn how to control containers - start, stop, inspect, and remove them.
+
+### List Containers
+- Running containers:
+```
+docker ps
+```
+
+- All containers (including stopped):
+```
+docker ps -a
+```
+
+- Stop Container:
+```
+docker stop mynginx
+```
+
+- Start Container:
+```
+docker start mynginx
+```
+
+- Inspect Container:
+```
+docker inspect mynginx
+```
+
+- View Logs:
+```
+docker logs mynginx
+```
+
+- Access Container Shell:
+```
+docker exec -it mynginx bash
+```
+
+- Remove Container
+```
+docker rm mynginx
+```
