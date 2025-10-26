@@ -129,7 +129,7 @@ docker exec -it mynginx bash
 
 `-it` -> interactive terminal
 
-## Building Your Own Image (Dockerfile)
+## Building our Own Image (Dockerfile)
 
 ### Example: Simple Python App
 
@@ -271,4 +271,34 @@ docker rm -f writer
 docker run -it --rm -v mydata:/data alpine cat /data/output.txt
 ```
 
-Volume keeps your data safe!
+Volume keeps our data safe!
+
+## Docker Networking - Container Communication
+
+Docker networking enables containers to communicate with each other securely and efficiently.
+
+- List Networks
+```bash
+docker network ls
+```
+
+- Create Custom Network
+```bash
+docker network create mynet
+```
+
+- Inspect Network
+```bash
+docker network inspect mynet
+```
+
+### Network Types Overview
+
+| Type        | Description                               |
+| ----------- | ----------------------------------------- |
+| **bridge**  | Default network for standalone containers |
+| **host**    | Shares host's network stack               |
+| **none**    | Isolated, no networking                   |
+| **overlay** | Multi-host networking for Docker Swarm    |
+
+> `Note:` When we use Docker Compose, it automatically creates a bridge network for all our services.
